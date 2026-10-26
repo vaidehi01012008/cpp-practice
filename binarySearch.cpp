@@ -1,9 +1,25 @@
 #include <iostream>
 using namespace std;
 
-int binarySearch(int a[], int n, int key)
+int main()
 {
-    int low = 0, high = n - 1, mid;
+    int a[100], n, i, key;
+    int low, high, mid, found = 0;
+
+    cout << "Enter number of elements: ";
+    cin >> n;
+
+    cout << "Enter sorted elements:\n";
+    for (i = 0; i < n; i++)
+    {
+        cin >> a[i];
+    }
+
+    cout << "Enter element to search: ";
+    cin >> key;
+
+    low = 0;
+    high = n - 1;
 
     while (low <= high)
     {
@@ -11,7 +27,9 @@ int binarySearch(int a[], int n, int key)
 
         if (a[mid] == key)
         {
-            return mid;
+            cout << "Element found at position " << mid + 1;
+            found = 1;
+            break;
         }
         else if (a[mid] < key)
         {
@@ -23,34 +41,9 @@ int binarySearch(int a[], int n, int key)
         }
     }
 
-    return -1;
-}
-
-int main()
-{
-    int a[100], n, key, result;
-
-    cout << "Enter number of elements: ";
-    cin >> n;
-
-    cout << "Enter sorted elements:\n";
-    for (int i = 0; i < n; i++)
-    {
-        cin >> a[i];
-    }
-
-    cout << "Enter element to search: ";
-    cin >> key;
-
-    result = binarySearch(a, n, key);
-
-    if (result == -1)
+    if (found == 0)
     {
         cout << "Element not found";
-    }
-    else
-    {
-        cout << "Element found at position " << result + 1;
     }
 
     return 0;
